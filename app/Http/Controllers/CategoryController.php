@@ -67,7 +67,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post=Post::find($id);
+        $categories= Category::all();
+        //returns the view and pass in the var we previously created
+
+        return view('posts.edit')->withPost($post)->withCategories($categories) ;
     }
 
     /**
