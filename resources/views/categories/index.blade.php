@@ -5,12 +5,12 @@
 @section('content')
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<h1>Categories</h1>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>#</th>
+						<!--<th>#</th>-->
 						<th>Name</th>
 					</tr>
 				</thead>
@@ -18,14 +18,14 @@
 				<tbody>
 					@foreach($categories as $category)
 					<tr>
-						<th>{{$category->id}}</th>
-						<td>{{$category->name}}</td>
+						<!--<th>{{$category->id}}</th>-->
+						<td><a href="#">{{$category->name}}</a></td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
 		</div> <!--end of .col-md-8-->
-
+		<!--
 		<div class="col-md-3">
 			<div class="well">
 				{!! Form::open(['route' => 'categories.store', 'method' => 'POST']) !!}
@@ -37,7 +37,7 @@
 
 				{!! Form::close() !!}
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 
