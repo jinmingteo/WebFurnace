@@ -5,7 +5,7 @@
 @section('content')
 
 	<div class="row">
-		{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' =>'PUT']) !!}
+		{!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' =>'PUT', 'files' => true]) !!}
 		<div class="col-md-8">
 			{{ Form::label('title', 'Title:')}}
 			{{ Form::text('title', null, ["class" =>'form-control input-lg'])}}
@@ -15,6 +15,9 @@
 
 			{{Form::label('category_id', 'Category:', ['class' =>'form-spacing-top'])}}
 			{{Form::select('category_id', $categories, null, ['class' => 'form-control'])}}
+			
+			{{Form::label('featured_image', 'Update Image:',['class' =>'form-spacing-top'])}}
+			{{Form::file('featured_image')}}
 			
 			{{ Form::label('body', 'Body:', ['class' =>'form-spacing-top'])}}
 			{{Form::textarea('body',null, ['class' => 'form-control'])}}
