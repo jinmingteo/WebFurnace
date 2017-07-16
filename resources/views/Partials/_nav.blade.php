@@ -38,7 +38,7 @@
                 </li>
             @else
 
-              <a href="{{ route('login') }}" class="btn btn-default" style="margin-top: 8px"> Login </a>
+              <a href="{{ route('loginas') }}" class="btn btn-default" style="margin-top: 8px"> Login </a>
 
             @endif
 

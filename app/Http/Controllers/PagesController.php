@@ -54,4 +54,8 @@ class PagesController extends Controller{
 
 		return redirect('/');
 	}
+
+	public function getLogin() {
+		return view('pages.bothlogin');
+	}
 }

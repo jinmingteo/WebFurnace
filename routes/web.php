@@ -28,6 +28,8 @@ Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getS
 Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 // slug must be either words or numbers or _ or -
 
+//log in button
+Route::get('loginas', 'PagesController@getLogin')->name('loginas');
 
 Auth::routes();
 
