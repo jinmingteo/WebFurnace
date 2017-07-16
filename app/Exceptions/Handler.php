@@ -55,11 +55,24 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)
-    {
+    {   
+        //catches API
         if ($request->expectsJson()) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest(route('login'));
+        $guard = array_get($exception->guards(),0);
+
+        switch($guard){
+            case 'consumers':
+                $login ='consumer.login';
+                break;
+
+            default;
+                $login = 'login';
+                break;
+        }
+
+        return redirect()->guest(route($login));
     }
 }
