@@ -39,3 +39,7 @@ Route::get('/logout','Auth\LoginController@logout' );
 //this will create CRUD
 
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+
+//Consumer interface
+
+Route::get('/consumer', 'ConsumerController@index');
