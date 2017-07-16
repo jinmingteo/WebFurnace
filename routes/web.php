@@ -21,11 +21,11 @@ Route::get('about', 'PagesController@getAbout');
 
 Route::get('/', 'PagesController@getIndex');
 
-Route::resource('posts','PostController');
+Route::resource('designs','PostController');
 
-Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle']) -> where('slug','[\w\d\-\_]+');
+Route::get('designer/{slug}', ['as' => 'designs.single', 'uses' => 'BlogController@getSingle']) -> where('slug','[\w\d\-\_]+');
  
-Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
+Route::get('designer', ['uses' => 'BlogController@getIndex', 'as' => 'designs.index']);
 // slug must be either words or numbers or _ or -
 
 

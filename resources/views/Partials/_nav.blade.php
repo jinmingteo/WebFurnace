@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="{{Request::is('/') ? "active": ""}}"><a href="/">Home</a></li> <!--need to change-->
-            <li class="{{Request::is('blog') ? "active": ""}}"><a href="/blog">Designs</a></li>
+            <li class="{{Request::is('designs') ? "active": ""}}"><a href="/designs">Designs</a></li>
             <li class="{{Request::is('about') ? "active": ""}}"><a href="/about">About</a></li>
             <li class="{{Request::is('contact') ? "active": ""}}"><a href="/contact">Contact</a></li>
           </ul>
@@ -27,7 +27,7 @@
 
                 <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome {{Auth::user()-> name}} <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{ route('posts.index')}}">Posts</a></li>
+                    <li><a href="{{ route('designs.index')}}">Posts</a></li>
                     <li><a href="{{ route('categories.index')}}">Categories</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="{{ route('logout')}}">Log Out</a></li>
