@@ -41,5 +41,8 @@ Route::get('/logout','Auth\LoginController@logout' );
 Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 
 //Consumer interface
-
-Route::get('/consumer', 'ConsumerController@index');
+Route::prefix('consumer')->group(function(){
+	Route::get('/login', 'Auth\ConsumerLoginController@showLoginForm') ->name('consumer.login');
+	Route::post('/login', 'Auth\ConsumerLoginController@login') ->name('consumer.login.submit');
+	Route::get('', 'ConsumerController@index') -> name('consumer.dashboard');	
+});
