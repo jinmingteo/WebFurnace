@@ -16,11 +16,11 @@ class ConsumerLoginController extends Controller
     	return view('auth.consumer-login');
     }
 
-    public function login($request){
+    public function login(Request $request){
     	//validate form data
     	$this ->validate($request, ['email' => 'required|email', 'password' => 'required|min:6']);
     	//attempt to log user in 
-    	if (Auth::guard('consumer') -> attempt(['email' => $request->email, 'password' => $request ->password],$request->$remember)){
+    	if (Auth::guard('consumers') -> attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
     		return redirect()->intended(route('consumer.dashboard'));
     		//throw back to where u were trying to go
     	}
