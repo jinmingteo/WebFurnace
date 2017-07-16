@@ -30,7 +30,7 @@ class ConsumerRegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'consumer.dashboard';
+    protected $redirectTo = 'consumer';
 
     /**
      * Create a new controller instance.
