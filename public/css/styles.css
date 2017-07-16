@@ -5,3 +5,40 @@
 .form-spacing-top{
 	margin-top:30px;
 }
+
+.designer {
+    color: maroon;
+    margin-bottom: 10rem;
+    font-size: 40px;
+}
+.user {
+    color: teal ;
+    margin-bottom: 10rem;
+    font-size: 40px;
+}
+.top {
+    font-weight: 500;
+}
+.text {
+    font-size:16px;
+}
+.a.btn.btn-primary {
+    border-radius: 2px;
+    color: #ffffff;
+    text-shadow: none;
+    background-color: maroon;
+}
+.a.btn.btn-primary:hover {
+    color: maroon;
+    background-color: #ffffff;
+}
+.b.btn.btn-primary {
+    border-radius: 2px;
+    color: #ffffff;
+    text-shadow: none;
+    background-color: teal;
+}
+.b.btn.btn-primary:hover {
+    color: teal;
+    background-color: #ffffff;
+}

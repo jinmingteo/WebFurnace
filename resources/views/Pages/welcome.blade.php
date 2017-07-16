@@ -3,61 +3,12 @@
 @section('title',' | Home')
 @section('content')
 
-       <style>
-    section .designer {
-        color: maroon;
-        margin-bottom: 10rem;
-        font-size: 40px;
-
-    }
-    section .user {
-        color: teal ;
-        margin-bottom: 10rem;
-        font-size: 40px;
-    }
-    section .top {
-        font-weight: 500;
-    }
-    section .text {
-        font-size:16px;
-    }
-    .jumbotron h1 {
-        color: #ffffff;
-        font: arial;
-    }
-    .jumbotron {
-        background-color: black;
-        background-size:cover;
-    }
-    .btn.btn-primary {
-        border-radius: 2px;
-        color: #ffffff;
-        text-shadow: none;
-        background-color: maroon;
-    }
-    .btn.btn-primary:hover {
-        color: maroon;
-        background-color: #ffffff;
-    }
-    .btn.btn-secondary {
-        border-radius: 2px;
-        color: #ffffff;
-        text-shadow: none;
-        background-color: teal;
-    }
-    .btn.btn-secondary:hover {
-        color: teal;
-        background-color: #ffffff;
-    }
-    </style>
-
     <body>
     <header class="row">
         <div class="row text-center">
-            <div class="jumbotron">
-                <h1> Welcome to WebFurnace</h1>
-                <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Getting Started</a></p> -->
-            </div>
+            <img src="{{ asset('images/welcome.PNG') }}"/>
+                <!--<h1> Welcome to WebFurnace</h1>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Getting Started</a></p> -->
         </div>
     </header> 
       <!-- end of header .row -->
@@ -69,7 +20,7 @@
                 </div>
                 <div class = "text">
                     <p>Share your great designs with those who need them!</p>
-                    <a href='#' class="btn btn-primary"> Sign Up Now! </a>
+                    <a href="{{ route('register') }}" class="a btn btn-primary"> Sign Up Now! </a>
                 </div>
             </div>
         </div>
@@ -80,7 +31,7 @@
                 </div>
                 <div class = "text">
                     <p>Look for your desired designer that satisfies your need!</p>
-                    <a href='#' class="btn btn-secondary"> Sign Up Now! </a>
+                    <a href={{ route('register.consumer') }} class="b btn btn-primary"> Sign Up Now! </a>
                 </div>
             </div>
         </div>

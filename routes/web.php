@@ -28,8 +28,10 @@ Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getS
 Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 // slug must be either words or numbers or _ or -
 
-
+Route::get('register/consumer', 'Auth\ConsumerRegisterController@showRegistrationForm')->name('register.consumer');
+Route::post('register/consumer', 'Auth\ConsumerRegisterController@register');
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
