@@ -10,7 +10,8 @@ class ConsumerLoginController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('guest:consumers');
+		$this->middleware('guest:consumers', ['except'=> 
+            ['logout']]);
 	}
     public function showLoginForm(){
     	return view('auth.consumer-login');
@@ -30,6 +31,12 @@ class ConsumerLoginController extends Controller
     	//if successful, then redirect to their intended location
     	//else, redirect back to login with form data
     	
+    }
+
+    public function logout()
+    {
+        Auth::guard('consumers')->logout();
+        return redirect('/');
     }
 }
 

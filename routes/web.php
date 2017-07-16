@@ -45,6 +45,10 @@ Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 Route::get('register/consumer', 'Auth\ConsumerRegisterController@showRegistrationForm')->name('register.consumer');
 Route::post('register/consumer', 'Auth\ConsumerRegisterController@register');
 
+//logout
+Route::get('/consumer/logout', 'Auth\ConsumerLoginController@logout')->name('consumer.logout');
+Route::get('logout', 'Auth\LoginController@userLogout')-> name('logout');
+
 Route::prefix('consumer')->group(function(){
 	Route::get('/login', 'Auth\ConsumerLoginController@showLoginForm') ->name('consumer.login');
 	Route::post('/login', 'Auth\ConsumerLoginController@login') ->name('consumer.login.submit');
