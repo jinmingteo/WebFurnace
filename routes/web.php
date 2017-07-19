@@ -36,7 +36,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/logout','Auth\LoginController@logout' );
+Route::get('/logout','Auth\LoginController@logout' ) ->name('designer.logout');
 
 //Categories
 //this will create CRUD
@@ -54,5 +54,12 @@ Route::get('logout', 'Auth\LoginController@userLogout')-> name('logout');
 Route::prefix('consumer')->group(function(){
 	Route::get('/login', 'Auth\ConsumerLoginController@showLoginForm') ->name('consumer.login');
 	Route::post('/login', 'Auth\ConsumerLoginController@login') ->name('consumer.login.submit');
-	Route::get('', 'ConsumerController@index') -> name('consumer.dashboard');	
+	Route::get('', 'ConsumerController@index') -> name('consumer.dashboard');
+
+	//password reset routes
+	Route::post('/password/email', 'Auth\ConsumerForgotPasswordController@sendResetLinkEmail')	->name('consumer.password.email');
+	Route::get('/password/reset', 'Auth\ConsumerForgotPasswordController@showLinkRequestForm')->name('consumer.password.request');
+	Route::post('/password/reset', 'Auth\ConsumerResetPasswordController@reset');
+	Route::get('/password/reset/{token}','Auth\ConsumerResetPasswordController@showResetForm')->name('consumer.password.reset');
+
 });
