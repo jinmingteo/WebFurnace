@@ -15,10 +15,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="{{Request::is('/') ? "active": ""}}"><a href="/">Home</a></li> <!--need to change-->
-            <li class="{{Request::is('about') ? "active": ""}}"><a href="/about">About</a></li>
-            <li class="{{Request::is('blog') ? "active": ""}}"><a href="/blog">Designs</a></li>
-            <li class="{{Request::is('contact') ? "active": ""}}"><a href="/contact">Contact</a></li>
+            @if (Auth::check())
+              <li class="{{Request::is('/') ? "active" : "" }}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+              <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
+              <li class="{{Request::is('designs') ? "active" : "" }}"><a href="/designs">Designs</a></li>  
+              <li class="{{Request::is('posts') ? "active" : "" }}"><a href="/posts">Jobs</a></li>
+              <li class="{{Request::is('posts/create') ? "active" : "" }}"><a href="/posts/create">Post A Job</a></li>
+              <li class="{{Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
+          
+            @else
+              <li class="{{Request::is('/') ? "active" : "" }}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+              <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
+              <li class="{{Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
+            @endif
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
