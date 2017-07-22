@@ -10,30 +10,31 @@
 
 			<h1>{!! $post->title !!}</h1>
 
-			<p class="lead">{!! $post -> body !!}</p>
+			<h5 class="lead">{!! $post -> body !!}</h5>
+			<h4>Budget: {{ $post->budget }}</h4>
 		</div>
 
 		<div class="col-md-4">
 			<div class="well">
-				<dl class="dl-horizontal">
-					<label>URL:</label>
-					<p><a href="{{ url('blog/'.$post->slug)}}"> {{url('blog/'.$post->slug)}} </a></p>
-				</dl>
+				 <dl class="dl-horizontal">
+					<label>ID No.:</label>
+					<p>{{ $post-> id }}</p>
+				</dl> 
 
-				<d1 class="d1-horizontal">
+				<dl class="dl-horizontal">
 					<label>Category:</label>
 					<p>{{$post->category->name}}</p>
-				</d1>
+				</dl>
 
 				<dl class="dl-horizontal">
 					<label>Created At:</label>
 					<p>{{ date('M j, Y H:i',strtotime($post-> created_at))}} </p>
 				</dl>
 
-				<d1 class="d1-horizontal">
+				<dl class="dl-horizontal">
 					<label>Last Updated:</label>
 					<p>{{date('M j, Y H:i',strtotime($post-> updated_at))}}</p>
-				</d1>
+				</dl>
 				<hr>
 				<div class="row">
 					<div class="col-sm-6">
@@ -58,7 +59,5 @@
 			</div>
 		</div>
 	</div>
-
-
 
 @endsection

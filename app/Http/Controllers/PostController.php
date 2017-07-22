@@ -121,8 +121,13 @@ class PostController extends Controller
         foreach($categories as $category){
             $cats[$category->id] = $category->name;
         }
+        $deadlines = Deadline::all();
+        $deads = [];
+        foreach($deadlines as $deadline) {
+            $deads[$deadline->id] = $deadline->name;
+        }
         // return the view and pass in the var as we previously created
-        return view('posts.edit')->withPost($post)->withCategories($cats);
+        return view('posts.edit')->withPost($post)->withCategories($cats)->withDeadlines($deads);
     }
 
     /**
@@ -139,10 +144,13 @@ class PostController extends Controller
         
         $this->validate($request,array(
                 'title' => 'required|max:255',
-                'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug, $id",
+                'slug' => 'required|alpha_dash|min:5|max:255',//|unique:posts, slug',
                 'category_id' => 'required|integer',
+                'othercategory'=> 'required_if: category_id,13|max:255',
+                'budget'=>'required',
                 'body' => 'required',
-                'featured_image' => 'image'
+                'deadline_id'=> 'required|integer',
+                'featured_image' => 'sometimes|image'
             ));
 
         // Save the data to the db
@@ -152,7 +160,13 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->category_id=$request->input('category_id');
+        $post->budget = $request->input('budget');
         $post->body = Purifier::clean($request->input('body'));
+        $post->deadline_id = $request->input('deadline_id');
+
+        if ($request->has('othercategory')){
+          $post->othercategory=$request->input('othercategory');
+        }
 
         if($request->hasFile('featured_image')){
             //add photo
