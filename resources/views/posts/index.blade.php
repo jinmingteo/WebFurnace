@@ -14,8 +14,41 @@
 		</div>
 		<div class="col-md-12">
 			<hr>
-		</div> <!-- end of row -->
+		</div> 
+	</div> <!-- end of row -->
+		
+	<div class="well">
+	
+			@foreach ($posts as $post)
+				<div class="row">
+					<div class="col-md-8">
+						<h3>{{ $post->title }}</h3>
+						<label>Category: {{ $post->category->name }}</label>
+						<p>{{substr(strip_tags($post->body),0,50)}}{{strlen(strip_tags($post->body)) > 50 ? "..." : ""}}</p> 
+						<label>Created At:</label>
+						<p>{{date('M j, Y h:ia', strtotime($post->created_at))}}</p>
+					</div>
+					<div class="col-md-4">
+						<div class="well">
+							<dl class="dl horizontal">
+								<label>Budget:</label><p>{{ $post->budget}}</p>
+							</dl>
 
+							<div class="row">
+								<div class="col-md-6">
+									<a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More and Apply</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+			@endforeach
+		
+	</div>
+
+
+		<!--
 		<div class="row">
 			<div class ="col-md-12">
 				<table class = "table">
@@ -48,8 +81,9 @@
 				{!! $posts->links();!!}
 				</div>
 			</div>
-		</div>
+		</div> 
 
-	</div>
+	</div> -->
+
 
 @endsection

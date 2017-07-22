@@ -17,29 +17,39 @@
 			<hr>
 			{!! Form::open(['route' => 'posts.store','data-parsley-validate' => '', 'files' => true]) !!}
 			
-				{{ Form::label('title','Title:')}}
+				{{ Form::label('title','Job/Project Title:')}}
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength'=>'255'))}}
+				{{ Form::label('slug', 'Slug:') }}
+				{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength'=> '255')) }}
 
-				{{ Form::label('slug', 'Slug:')}}
-				{{ Form:: text('slug', null, array('class' => 'form-control', 'requried' =>'', 'minlength' => '5', 'maxlength' => '255'))}}
-
-				{{ Form::label('category_id', 'Category:') }}
+				{{ Form::label('category_id', 'Job/Project Category:') }}
 				<select class="form-control" name="category_id">
 					@foreach($categories as $category)
-						<option value='{{$category->id}}'>{{ $category->name }}
-						</option>
-
+						<option value="{{ $category->id }}">{{ $category->name }}</option>
 					@endforeach
 				</select>
 
-				{{Form::label('featured_image','Upload Image:')}}
-				{{Form::file('featured_image')}}
+				{{ Form::label('othercategory', 'If Others, please specify:') }}
+				{{ Form::text('othercategory', null, ['class' => 'form-control']) }}
+
+				{{ Form:: label('body',"Details, Requirement, Information:") }}
+				{{ Form::textarea('body','Anything the designer needs to know', array('class' => 'form-control')) }}
+
+				{{ Form::label('deadline_id', 'Deadline: (Let the designer have a rouge gauge of the time available)') }}
+				<select class="form-control" name="deadline_id">
+					@foreach($deadlines as $deadline)
+						<option value="{{ $deadline->id }}">{{ $deadline->name }}</option>
+					@endforeach
+				</select>
+
+				{{ Form::label('budget', 'Budget:') }}
+				{{ Form::text('budget', null, ['class' =>'form-control']) }}
 
 
-				{{Form:: label('body',"Post Body:")}}
-				{{Form::textarea('body',null, array('class' => 'form-control'))}}
+				{{ Form::label('featured_image', 'Upload Featured Image:') }}
+				{{ Form::file('featured_image') }}
 
-				{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-black','style' => 'margin-top:20px;'))}}
+				{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block','style' => 'margin-top:20px;'))}}
 
 			{!! Form::close() !!}
 

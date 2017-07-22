@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Session;
 use App\Category;
+use App\Deadline;
 use Purifier;
 use Image;
 use Storage;
@@ -14,7 +15,8 @@ class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:consumers');
+        $this->middleware('auth'); 
     }
     /**
      * Display a listing of the resource.
@@ -38,7 +40,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create') -> withCategories($categories);
+        $deadlines = Deadline::all();
+        return view('posts.create') -> withCategories($categories)->withDeadlines($deadlines);
     }
 
     /**
@@ -52,9 +55,12 @@ class PostController extends Controller
         //validate data
         $this->validate($request,array(
                 'title' => 'required|max:255',
-                'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+                'slug' => 'required|alpha_dash|min:5|max:255',//|unique:posts, slug',
                 'category_id' => 'required|integer',
+                'othercategory'=> 'required_if: category_id,13|max:255',
+                'budget'=>'required',
                 'body' => 'required',
+                'deadline_id'=> 'required|integer',
                 'featured_image' => 'sometimes|image'
             ));
         //store in the database
@@ -63,7 +69,13 @@ class PostController extends Controller
         $post->title = $request->title;
         $post ->slug = $request->slug;
         $post->category_id=$request->category_id;
-        $post->body =Purifier::clean($request->body);
+        $post->deadline_id=$request->deadline_id;
+        $post->budget=$request->budget;
+        $post->body = Purifier::clean($request->body);
+
+        if ($request->has('othercategory')){
+          $post->othercategory=$request->othercategory;
+        }
 
         //save image
         if ($request->hasFile('featured_image')){
