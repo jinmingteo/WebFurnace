@@ -10,13 +10,13 @@ use App\Deadline;
 use Purifier;
 use Image;
 use Storage;
+use Auth;
 
 class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth:consumers');
-        $this->middleware('auth'); 
+        
     }
     /**
      * Display a listing of the resource.
@@ -41,7 +41,8 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $deadlines = Deadline::all();
-        return view('posts.create') -> withCategories($categories)->withDeadlines($deadlines);
+        $poster = Auth::user();
+        return view('posts.create') -> withCategories($categories)->withDeadlines($deadlines)->withPoster($poster);
     }
 
     /**
@@ -72,6 +73,7 @@ class PostController extends Controller
         $post->deadline_id=$request->deadline_id;
         $post->budget=$request->budget;
         $post->body = Purifier::clean($request->body);
+        $post->poster = Auth::user()->username;
 
         if ($request->has('othercategory')){
           $post->othercategory=$request->othercategory;

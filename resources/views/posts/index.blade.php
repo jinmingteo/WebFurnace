@@ -24,9 +24,9 @@
 					<div class="col-md-8">
 						<h3>{{ $post->title }}</h3>
 						<label>Category: {{ $post->category->name }}</label>
-						<p>{{substr(strip_tags($post->body),0,50)}}{{strlen(strip_tags($post->body)) > 50 ? "..." : ""}}</p> 
-						<label>Created At:</label>
-						<p>{{date('M j, Y h:ia', strtotime($post->created_at))}}</p>
+						<p>{{substr(strip_tags($post->body),0,50)}}{{strlen(strip_tags($post->body)) > 50 ? "..." : ""}}</p>
+						<label>Posted by: <a href="">{{ $post->poster }}</a></label>
+						<p><label>Created At: {{date('M j, Y h:ia', strtotime($post->created_at))}}</label></p>
 					</div>
 					<div class="col-md-4">
 						<div class="well">
