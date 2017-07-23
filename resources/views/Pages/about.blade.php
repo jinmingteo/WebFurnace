@@ -1,11 +1,11 @@
 @extends ('main')
-@section('title',' | About')
+@section('title',' | About Us')
 @section('content')
 
   <div class="row">
         <div class="col-md-12">
-          <h1>About Me</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis aspernatur quas quibusdam veniam sunt animi, est quos optio explicabo deleniti inventore unde minus, tempore enim ratione praesentium, cumque, dolores nesciunt?</p>
+          <h1>About Us</h1>
+          <p>Hi there. We’re WebFurnace. We hope to showcase web designers/developers across the globe to people who wants to create their own website.</p>
         </div>
       </div>
 @endsection
