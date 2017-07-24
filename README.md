@@ -11,12 +11,13 @@ Aim:
 We hope to showcase web designers/developers across the globe to people who wants to create their own website.
  
 Functionalities:
- 
-Allows web designers/developers to create and edit their own individual accounts/profiles. [CRUD]
+
+Allows web designers/developers and employers to create and update/edit their own individual accounts/profiles. [CRUD]
 Social Integration.
-Interested parties can contact the respective web designers/developers via private message function.
+Bulletin board for consumers/users to post their requests, stating their requirements, proposed price for the website they want to create as well as the completion time (eg whether it is urgent etc)
+Interested parties can contact the respective consumers/users via private message function.
 Allows consumers to provide ratings and reviews on web designers/developers that they have previously worked with.
-Function to sort web designers/developers based on price charged.
+
  
 Technologies and tools to be used in the project: 
  
