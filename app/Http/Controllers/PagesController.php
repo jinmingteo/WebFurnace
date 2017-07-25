@@ -8,12 +8,20 @@ use App\Http\Requests;
 use App\Post;
 use Mail;
 use Session;
+use Auth;
 
 class PagesController extends Controller{
 
 	public function getIndex(){
-		$posts = Post::orderBy('created_at', 'desc') -> limit(4)->get();
-		return view('pages.welcome')->withPosts($posts);
+		if (Auth::check()){
+			$posts = Post::orderBy('created_at', 'desc') -> limit(4)->get();	
+			return view('auth.home')->withPosts($posts);
+		}
+
+		else{
+		return view('pages.welcome');
+		}
+
 		# process varaible data or params
 		# talk to the model
 		# receive from the model
