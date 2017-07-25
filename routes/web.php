@@ -2,6 +2,9 @@
 //others
 Route::get('designer/{username}',['as' => 'designer.profile', 'uses' => 'DesignerController@getProfile'])->where('username','[\w\d\-\_]+');
 
+Route::resource('designerprofile','DesignerProfileController',['except' => ['destroy','create']]);
+//PagesController
+
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 
