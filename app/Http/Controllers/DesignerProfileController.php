@@ -63,10 +63,11 @@ class DesignerProfileController extends Controller
             $designerprofile->image=$filename; //store filename into db
 
         }
-
         $designerprofile->save();
+
         $user = Auth::user();
-        $user->designerprofile_id = $designerprofile->id;
+        Auth::user()->designerprofile_id = $designerprofile->id;
+        
 
         Session::flash('success', 'Your profile has been updated');
 

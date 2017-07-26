@@ -14,7 +14,7 @@ class AddDesignerprofileIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('designerprofile_id')->nullable()->unsigned();
+            $table->integer('designerprofile_id')->nullable()->unsigned()->after('password');
         });
     }
 
