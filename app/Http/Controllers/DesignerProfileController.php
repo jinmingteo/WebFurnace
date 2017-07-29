@@ -64,14 +64,14 @@ class DesignerProfileController extends Controller
 
         }
         $designerprofile->save();
-
+        
         $user = Auth::user();
         Auth::user()->designerprofile_id = $designerprofile->id;
         
 
         Session::flash('success', 'Your profile has been updated');
 
-        return redirect()->route('designerprofile.show',$user->id);
+        return redirect()->route('designerprofile.show',$user->username);
     }
 
     /**
@@ -80,9 +80,9 @@ class DesignerProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {   
-        $user = User::find($id);
+        $user = User::where('username',$username) -> first();
         return view('designer.profile.single')->withUser($user);
     }
 

@@ -12,7 +12,7 @@
 
 <div class="col-md-3">
 			<div class="well">
-				{!! Form::open(['route' => 'designerprofile.store','data-parsley-validate' => '', 'files' => true]) !!}
+				{!! Form::open(['route' => 'designerprofile.store', 'method' => 'POST','data-parsley-validate' => '', 'files' => true]) !!}
 				
 				<h2> Update your profile</h2>
 				{{ Form::label('About Me', 'Bio:')}}
