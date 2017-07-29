@@ -13,4 +13,7 @@ class Post extends Model
     public function deadline() {
     	return $this->belongsTo('App\Deadline');
     }
+    public function comments() {
+    	return $this->hasMany('App\Comment');
+    }
 }

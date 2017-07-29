@@ -12,7 +12,65 @@
 			
 			<h5 class="lead">{!! $post -> body !!}</h5>
 			<h4>Budget: {{ $post->budget }}</h4>
+			<hr>
+
+			<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="comments-title"><span class="glyphicon glyphicon-comment"></span>   {{ $post->comments()->count() }} Comments</h3> 
+					</div>
+				</div>
+			
+				@foreach($post->comments as $comment)
+					<div class="comment">
+						<div class="author-info">
+							<img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) }}" class="author-image">
+								
+								<div class="author-name">
+									<h4>{{$comment->username }}</h4>
+									<p class="author-time">{{ date('M j, Y h:ia'), strtotime($comment->created_at) }}</p>
+								</div>
+								<div class="buttons">
+									@if (Auth::user()->username == $comment->username)
+										<a href="{{route('comments.edit', $comment->id) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+										<a href="{{route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+									@endif
+								</div>
+
+						</div>
+						<div class="comment-content">
+							{{$comment->comment}}
+						</div>
+					</div>
+				@endforeach
+			</div>
 		</div>
+
+		<div class="row">
+			<div id="comment-form" class="col-md-8">
+				<h3>Add a Comment</h3>
+				{{ Form::open(['route'=> ['comments.store', $post->id], 'method'=> 'POST']) }}
+					<div class="row">
+						<!--<div class="col-md-6">
+						{{ Form::label('name', 'Name:') }}
+						{{ Form::text('name', null, ['class' => 'form-control']) }}
+						</div>
+						<div class="col-md-6">
+							{{ Form::label('email', 'Email:') }}
+							{{ Form::text('email', null, ['class' => 'form-control']) }}
+						</div> -->
+						<div class="col-md-12">
+							{{ Form::label('comment', 'Comment:')}}
+							{{ Form::textarea('comment', null, ['class'=>'form-control','rows'=>'5']) }}
+
+							{{ Form::submit('Add Comment', ['class'=> 'btn btn-success btn-block', 'style'=>'margin-top:15px']) }}
+						</div>
+					</div>
+				{{ Form::close() }}
+			</div>
+		</div>
+	</div>
 
 		<div class="col-md-4">
 			<div class="well">
@@ -58,12 +116,9 @@
 						</div>
 					</div>
 				@else
+					@if (Auth::guard('web')->check())
 					<div class="row">
-						<div class="col-sm-8">
-							<a href="" class="btn btn-primary btn-block">Chat with Employer/User</a>
-					
-						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-12">
 							<a href="" class="btn btn-success btn-block">Apply</a>
 						</div>
 
@@ -73,6 +128,13 @@
 							</div>
 						</div>
 					</div>
+					@else
+					<div class="row">
+							<div class="col-md-12">
+								{{Html::linkRoute('posts.index', '<< See All Posts', [], ['class' => 'btn btn-default btn-block btn-h1-spacing'])}}
+							</div>
+					</div>
+					@endif
 				@endif
 			</div>
 		</div>
