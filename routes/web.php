@@ -34,7 +34,7 @@ Route::get('comments/{id}/delete', ['uses'=> 'CommentsController@delete', 'as' =
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/logout','Auth\LoginController@logout' ) ->name('designer.logout');
+//Route::get('/logout','Auth\LoginController@logout' ) ->name('designer.logout');
 
 //Categories
 //this will create CRUD

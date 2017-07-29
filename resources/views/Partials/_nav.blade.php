@@ -42,7 +42,11 @@
                     <li><a href="{{ route('posts.index')}}">Posts</a></li>
                     <li><a href="{{ route('categories.index')}}">Categories</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="{{ route('logout')}}">Log Out</a></li>
+                    @if (Auth::guard('web')->check())
+                      <li><a href="{{ route('logout') }}">Logout</a></li>
+                    @else
+                      <li><a href="{{ route('consumer.logout') }}">Logout</a></li>
+                    @endif
                   </ul>
                 </li>
             @else
