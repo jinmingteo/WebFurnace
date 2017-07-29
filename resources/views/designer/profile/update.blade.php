@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| All Categories')
+@section('title', ' | Update Profile')
 
 @section('stylesheets')
 	
@@ -10,22 +10,28 @@
 
 @section('content')
 
-<div class="col-md-3">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="well">
+				<h1>Update your profile </h1>
+				<hr>
 				{!! Form::open(['route' => 'designerprofile.store', 'method' => 'POST','data-parsley-validate' => '', 'files' => true]) !!}
 				
-				<h2> Update your profile</h2>
+				
 				{{ Form::label('About Me', 'Bio:')}}
-				{{ Form::text('aboutme', null,['class' => 'form-control']) }}
+				{{ Form::textarea('aboutme', null,['class' => 'form-control']) }}
+				<br>
 
 				{{ Form::label('featured_image', 'Upload Featured Image:') }}
 				{{ Form::file('featured_image') }}
+				<br>
 
-				{{Form::submit('Update your profile', ['class' => 'btn btn-primary btn-block'])}}
+				{{Form::submit('Update profile', ['class' => 'btn btn-primary btn-block'])}}
 
 				{!! Form::close() !!}
 			</div>
 		</div> 
+	</div>
 
 @endsection
 
