@@ -58,7 +58,7 @@ class DesignerProfileController extends Controller
             $image = $request->file('featured_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();  //unique name
             $location = public_path('images/' . $filename);
-            Image::make($image)->resize(800,400)->save($location);
+            Image::make($image->getRealPath())->resize(800,400)->save($location);
 
             $designerprofile->image=$filename; //store filename into db
 
