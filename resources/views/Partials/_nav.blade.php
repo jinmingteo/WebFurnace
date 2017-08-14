@@ -17,8 +17,7 @@
           <ul class="nav navbar-nav">
             @if (Auth::check())
               <li class="{{Request::is('/') ? "active" : "" }}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-              <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
-              <li class="{{Request::is('blog') ? "active" : "" }}"><a href="/blog">Designs</a></li>  
+              <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>  
               <li class="{{Request::is('posts') ? "active" : "" }}"><a href="/posts">Jobs</a></li>
               <li class="{{Request::is('posts/create') ? "active" : "" }}"><a href="/posts/create">Post A Job</a></li>
               <li class="{{Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
@@ -40,7 +39,6 @@
                   <ul class="dropdown-menu">
                     <li><a href="/designerprofiled">Profile</a></li>
                     <li><a href="{{ route('posts.index')}}">Posts</a></li>
-                    <li><a href="{{ route('categories.index')}}">Categories</a></li>
                     <li role="separator" class="divider"></li>
                     @if (Auth::guard('web')->check())
                       <li><a href="{{ route('logout') }}">Logout</a></li>

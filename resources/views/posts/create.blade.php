@@ -42,7 +42,7 @@
 					@endforeach
 				</select>
 
-				{{ Form::label('budget', 'Budget:') }}
+				{{ Form::label('budget', 'Remuneration:') }}
 				{{ Form::text('budget', null, ['class' =>'form-control']) }}
 
 
@@ -60,7 +60,7 @@
 @endsection
 
 @section('scripts')
-	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qk4uheuggojvxn43ryzx2vd8ji075dclpgtfu0ays0wb4sv4"></script>
 
 	<script>
 		tinymce.init({
