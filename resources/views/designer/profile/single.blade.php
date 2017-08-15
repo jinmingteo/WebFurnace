@@ -17,14 +17,14 @@
             <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-8">
                     <h2>{{$user -> username}}</h2>
-                    <p><strong>About: </strong> hi, I am thankful for the learning opportunity for orbital and this is a trial</p>
+                    <p><strong>About: </strong> {{$design-> aboutme}}</p>
                     
                     <p><strong>Email: {{$user -> email}}</strong>
                     </p>
                 </div> 
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>
-                        <img src="{{ asset('images/shinchan.jpg') }}"/>
+                        <img src="{{asset('images/'.$design->image)}}"/>
                     </figure>
                 </div>
             </div>            

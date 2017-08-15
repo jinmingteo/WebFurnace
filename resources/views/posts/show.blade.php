@@ -11,7 +11,7 @@
 			<small>posted by: <a href="">{{ $post->poster }}</a></small>
 			
 			<h5 class="lead">{!! $post -> body !!}</h5>
-			<h4>Budget: {{ $post->budget }}</h4>
+			<h4>Remuneration: {{ $post->budget }}</h4>
 			<hr>
 
 			<div class="row">

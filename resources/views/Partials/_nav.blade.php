@@ -37,7 +37,7 @@
 
                 <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome {{Auth::user()-> username}} <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="/designerprofiled">Profile</a></li>
+                    <<li><a href="{{route('designerprofile.index')}}">Profile</a></li> 
                     <li><a href="{{ route('posts.index')}}">Posts</a></li>
                     <li role="separator" class="divider"></li>
                     @if (Auth::guard('web')->check())

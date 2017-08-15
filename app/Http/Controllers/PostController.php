@@ -16,9 +16,9 @@ class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth', ['except'=>'create']);
-        $this->middleware('auth:consumers'); //not really working... need to change acc to the account youre in
-    }
+        $this->middleware('auth:consumers', ['except'=>'index','show']);
+        //only consumers can access create page...
+      }
     /**
      * Display a listing of the resource.
      *

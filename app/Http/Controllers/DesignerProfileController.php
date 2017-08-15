@@ -30,7 +30,9 @@ class DesignerProfileController extends Controller
             return view('designer.profile.update');    
         }
         else{
-            return view('designer.profile.single')->withUser($user);
+            $idz = $user->designerprofile_id;
+            $design = DesignerProfile::find($idz);
+            return view('designer.profile.single')->withUser($user)->withDesign($design);
         }
     }
 
@@ -58,7 +60,7 @@ class DesignerProfileController extends Controller
             $image = $request->file('featured_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();  //unique name
             $location = public_path('images/' . $filename);
-            Image::make($image->getRealPath())->resize(800,400)->save($location);
+            Image::make($image->getRealPath())->resize(170,170)->save($location);
 
             $designerprofile->image=$filename; //store filename into db
 
@@ -67,6 +69,7 @@ class DesignerProfileController extends Controller
         
         $user = Auth::user();
         Auth::user()->designerprofile_id = $designerprofile->id;
+        $user->save();
         
 
         Session::flash('success', 'Your profile has been updated');
@@ -83,7 +86,9 @@ class DesignerProfileController extends Controller
     public function show($username)
     {   
         $user = User::where('username',$username) -> first();
-        return view('designer.profile.single')->withUser($user);
+        $idz = $user->designerprofile_id;
+        $design = DesignerProfile::find($idz);
+        return view('designer.profile.single')->withUser($user)->withDesign($design);
     }
 
     /**
