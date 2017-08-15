@@ -104,7 +104,7 @@ class ConsumerRegisterController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard();
+        return Auth::guard('consumers');
     }
 
     /**

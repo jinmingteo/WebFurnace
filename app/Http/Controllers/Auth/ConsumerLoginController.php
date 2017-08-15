@@ -13,6 +13,12 @@ class ConsumerLoginController extends Controller
 		$this->middleware('guest:consumers', ['except'=> 
             ['logout']]);
 	}
+
+    protected function guard()
+    {
+        return Auth::guard('consumers');
+    }
+    
     public function showLoginForm(){
     	return view('auth.consumer-login');
     }
