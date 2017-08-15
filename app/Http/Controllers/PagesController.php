@@ -13,13 +13,13 @@ use Auth;
 class PagesController extends Controller{
 
 	public function getIndex(){
-		if (Auth::check()){
+		if (Auth::guest()){
+			return view('pages.welcome');
+		}
+		
+		else{
 			$posts = Post::orderBy('created_at', 'desc') -> limit(4)->get();	
 			return view('auth.home')->withPosts($posts);
-		}
-
-		else{
-		return view('pages.welcome');
 		}
 
 		# process varaible data or params
