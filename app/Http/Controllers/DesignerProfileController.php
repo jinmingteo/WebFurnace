@@ -97,9 +97,13 @@ class DesignerProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        //
+        $user = User::where('username', $username)->first();
+        $id = $user->designerprofile_id;
+        $profile = DesignerProfile::find($id);
+        $aboutme = $profile->aboutme;
+        return view('designer.profile.edit')->withUser($user)->withProfile($profile)->withAboutme($aboutme);
     }
 
     /**
@@ -109,9 +113,34 @@ class DesignerProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        //
+        $user = User::where('username', $username)->first();
+        $id = $user->designerprofile_id;
+        $profile = DesignerProfile::find($id);
+
+        $this->validate($request, array(
+            'aboutme' => 'required|max:255',
+            'featured_image' => 'sometimes|image'));
+
+        $profile->aboutme = $request->input('aboutme');
+
+         if($request->hasFile('featured_image')){
+            //add photo
+            $image = $request->file('featured_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();  //unique name
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(170,170)->save($location);
+            $oldFilename = $profile ->image;
+            $profile->image=$filename;
+
+            Storage::delete($oldFilename);
+        }
+        $profile->save();
+
+        Session::flash('success', 'Your profile has been updated');
+
+        return redirect()-> route('designerprofile.show', $user->username);
     }
 
     /**

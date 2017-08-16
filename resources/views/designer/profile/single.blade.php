@@ -16,11 +16,19 @@
     	 <div class="well profile">
             <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-8">
-                    <h2>{{$user -> username}}</h2>
+                    <h2>{{$user -> username}}</h2> 
                     <p><strong>About: </strong> {{$design-> aboutme}}</p>
-                    
-                    <p><strong>Email: {{$user -> email}}</strong>
-                    </p>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <p><strong>Email: {{$user -> email}}</strong> 
+                            </p>
+                        </div>
+                        @if (Auth::user()->username == $user->username)
+                        <div class="col-md-1">
+                            <a href="{{ route('designerprofile.edit', $user->username) }}" class="btn btn-primary" style="margin-bottom: 5px">Update Profile</a>
+                        </div>
+                        @endif
+                    </div>
                 </div> 
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>
