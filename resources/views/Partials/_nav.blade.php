@@ -60,7 +60,11 @@
 
                 <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome {{Auth::guard('consumers')->user()-> username}} <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <<li><a href="{{route('designerprofile.index')}}">Profile</a></li> 
+                    @if (Auth::guard('web')->check())
+                      <li><a href="{{route('designerprofile.index')}}">Profile</a></li>
+                    @else
+                       <li><a href="{{route('consumerprofile.index')}}">Profile</a></li>
+                    @endif
                     <li><a href="{{ route('posts.index')}}">Posts</a></li>
                     <li role="separator" class="divider"></li>
                     @if (Auth::guard('web')->check())
