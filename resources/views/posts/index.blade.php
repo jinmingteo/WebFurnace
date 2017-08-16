@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<div class="col-md-10">
-			<h2>All Posts</h2>
+			<h1>All Posts</h1>
 		</div>
 		@if (Auth::guard('consumers')->check())
 		<div class="col-md-2">
