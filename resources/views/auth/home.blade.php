@@ -11,22 +11,36 @@
         </div>
         </header> 
 
-        <div class="row">
-            <div class="col-md-8">
-                
-                @foreach($posts as $post)
+        <h1> Recent Job Posts </h1>
 
-                    <div class="post">
+       <div class="well">
+    
+            @foreach ($posts as $post)
+                <div class="row">
+                    <div class="col-md-8">
                         <h3>{{ $post->title }}</h3>
-                        <p>{{ substr(strip_tags($post->body), 0, 300) }}{{ strlen(strip_tags($post->body)) > 300 ? "..." : "" }}</p>
-                        <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
+                        <label>Category: {{ $post->category->name }}</label>
+                        <p>{{substr(strip_tags($post->body),0,50)}}{{strlen(strip_tags($post->body)) > 50 ? "..." : ""}}</p>
+                        <label>Posted by: <a href="">{{ $post->poster }}</a></label>
+                        <p><label>Created At: {{date('M j, Y h:ia', strtotime($post->created_at))}}</label></p>
                     </div>
+                    <div class="col-md-4">
+                        <div class="well">
+                            <dl class="dl horizontal">
+                                <label>Remuneration:</label><p>{{ $post->budget}}</p>
+                            </dl>
 
-                    <hr>
-
-                @endforeach
-
-            </div>
-        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More and Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            @endforeach
+        
+    </div>
 
 @endsection

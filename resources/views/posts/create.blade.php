@@ -47,6 +47,9 @@
 
 
 				{{ Form::label('featured_image', 'Upload Featured Image:') }}
+				<br> Recommended: 800px x 400px </br>
+
+				<br>
 				{{ Form::file('featured_image') }}
 
 				{{ Form::submit('Create Job Post', array('class' => 'btn btn-success btn-lg btn-block','style' => 'margin-top:20px;'))}}
