@@ -8,7 +8,7 @@
 		<div class="col-md-8">
 			<!-- <img src="{{asset('images/'.$post->image)}}" alt ="This is a photo"/> -->
 			<h1>{!! $post->title !!}</h1>
-			<small>posted by: <a href="">{{ $post->poster }}</a></small>
+			<small>posted by: <a href="{{ route('consumerprofile.show', $post->poster) }}">{{ $post->poster }}</a></small>
 			
 			<h5 class="lead">{!! $post -> body !!}</h5>
 			<h4>Remuneration: {{ $post->budget }}</h4>
