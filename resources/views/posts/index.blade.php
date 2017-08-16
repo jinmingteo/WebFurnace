@@ -32,7 +32,7 @@
 					<div class="col-md-4">
 						<div class="well">
 							<dl class="dl horizontal">
-								<label>Budget:</label><p>{{ $post->budget}}</p>
+								<label>Remuneration:</label><p>{{ $post->budget}}</p>
 							</dl>
 
 							<div class="row">
