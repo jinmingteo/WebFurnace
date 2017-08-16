@@ -19,7 +19,9 @@
               <li class="{{Request::is('/') ? "active" : "" }}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
               <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>  
               <li class="{{Request::is('posts') ? "active" : "" }}"><a href="/posts">Jobs</a></li>
+              @if (Auth::guard('consumers')->check())
               <li class="{{Request::is('posts/create') ? "active" : "" }}"><a href="/posts/create">Post A Job</a></li>
+              @endif
               <li class="{{Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
           
             @else
