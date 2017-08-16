@@ -13,7 +13,7 @@ use Auth;
 class PagesController extends Controller{
 
 	public function getIndex(){
-		if (Auth::guest()){
+		if (Auth::check() or is_null(Auth::guard('consumers')->user())){
 			return view('pages.welcome');
 		}
 		
