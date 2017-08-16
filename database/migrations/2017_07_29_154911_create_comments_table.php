@@ -35,7 +35,10 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['post_id']);
+        Schema::table('comments', function (Blueprint $table) {
+        $table->dropForeign(['post_id']);
+        });
+        
         Schema::dropIfExists('comments');
 
     }
