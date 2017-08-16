@@ -34,4 +34,8 @@ class Consumer extends Authenticatable
     {
         $this->notify(new ConsumerResetPasswordNotification($token));
     }
+
+    public function consumerprofile(){
+        return $this->belongsTo('App\ConsumerProfile');
+    }
 }

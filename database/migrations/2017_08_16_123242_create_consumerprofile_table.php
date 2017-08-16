@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDesignerprofileIdToUsers extends Migration
+class CreateConsumerprofileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddDesignerprofileIdToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('designerprofile_id')->nullable()->unsigned()->after('password');
+        Schema::create('consumerprofile', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('aboutme');
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddDesignerprofileIdToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('designerprofile_id');
-        });
+        Schema::dropIfExists('consumerprofile');
     }
 }

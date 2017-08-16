@@ -1,8 +1,13 @@
 <?php
 //others
-Route::get('designer/{username}',['as' => 'designer.profile', 'uses' => 'DesignerController@getProfile'])->where('username','[\w\d\-\_]+');
+//Route::get('designer/{username}',['as' => 'designer.profile', 'uses' => 'DesignerController@getProfile'])->where('username','[\w\d\-\_]+');
 
 Route::resource('designerprofile','DesignerProfileController',['except' => ['destroy','create']]);
+
+//Route::get('consumer/{username}',['as' => 'consumer.profile', 'uses' => 'ConsumerController@getProfile'])->where('username','[\w\d\-\_]+');
+
+Route::resource('consumerprofile','ConsumerProfileController',['except' => ['destroy','create']]);
+
 //PagesController
 
 Route::get('contact', 'PagesController@getContact');

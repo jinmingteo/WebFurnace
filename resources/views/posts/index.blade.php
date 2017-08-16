@@ -26,7 +26,7 @@
 						<h3>{{ $post->title }}</h3>
 						<label>Category: {{ $post->category->name }}</label>
 						<p>{{substr(strip_tags($post->body),0,50)}}{{strlen(strip_tags($post->body)) > 50 ? "..." : ""}}</p>
-						<label>Posted by: <a href="">{{ $post->poster }}</a></label>
+						<label>Posted by: <a href="{{ route('consumerprofile.show', $post->poster) }}">{{ $post->poster }}</a></label>
 						<p><label>Created At: {{date('M j, Y h:ia', strtotime($post->created_at))}}</label></p>
 					</div>
 					<div class="col-md-4">
