@@ -15,7 +15,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            @if (Auth::check())
+            @if (Auth::check() or Auth::guard('consumers')->check())
               <li class="{{Request::is('/') ? "active" : "" }}"><a href="/">Home <span class="sr-only">(current)</span></a></li>
               <li class="{{Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>  
               <li class="{{Request::is('posts') ? "active" : "" }}"><a href="/posts">Jobs</a></li>
@@ -49,6 +49,24 @@
                     @endif
                   </ul>
                 </li>
+
+            @elseif (Auth::guard('consumers')->check())
+
+              <li class="dropdown">
+
+                <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome {{Auth::guard('consumers')->user()-> username}} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <<li><a href="{{route('designerprofile.index')}}">Profile</a></li> 
+                    <li><a href="{{ route('posts.index')}}">Posts</a></li>
+                    <li role="separator" class="divider"></li>
+                    @if (Auth::guard('web')->check())
+                      <li><a href="{{ route('logout') }}">Logout</a></li>
+                    @else
+                      <li><a href="{{ route('consumer.logout') }}">Logout</a></li>
+                    @endif
+                  </ul>
+                </li>)
+
             @else
 
               <a href="{{ route('loginas') }}" class="btn btn-default" style="margin-top: 8px"> Login </a>
