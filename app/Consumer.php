@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ConsumerResetPasswordNotification;
+use DB;
 
 class Consumer extends Authenticatable
 {
@@ -37,5 +38,12 @@ class Consumer extends Authenticatable
 
     public function consumerprofile(){
         return $this->belongsTo('App\ConsumerProfile');
+    }
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+    public function countposts() {
+        $count = DB::table('posts')->where('poster', $this->username)->count();
+        return $count;
     }
 }

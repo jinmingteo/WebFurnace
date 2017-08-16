@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 emphasis">
                     <p><small>Job Posts</small></p>
-                    <h2><strong>0</strong></h2>                    
+                    <h2><strong>{{ $user-> countposts() }}</strong></h2>                    
                 </div>
                 <!--<div class="col-xs-12 col-sm-4 emphasis">
                     <p><small>Completed Job Request</small></p>
