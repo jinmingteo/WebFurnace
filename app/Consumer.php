@@ -46,4 +46,9 @@ class Consumer extends Authenticatable
         $count = DB::table('posts')->where('poster', $this->username)->count();
         return $count;
     }
+
+    public function getposts() {
+        $posts = DB::table('posts')->where('poster', $this->username);
+        return $posts;
+    }
 }
