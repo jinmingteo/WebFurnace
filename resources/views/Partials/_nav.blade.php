@@ -73,7 +73,7 @@
                       <li><a href="{{ route('consumer.logout') }}">Logout</a></li>
                     @endif
                   </ul>
-                </li>)
+                </li>
 
             @else
 
