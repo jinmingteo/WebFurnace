@@ -25,13 +25,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = $request->get('q');
+        if ($query) {
+          $posts = Post::where('title', 'like', '%'.$query.'%')->orderBy('id', 'desc')->paginate(10);
+          return view('posts.index')->withPosts($posts);
+        } else {
         // creat a var and store all the blog posts in it from the database
         $posts = Post::orderBy('id','desc')->paginate(10);
         //descending number. latest post first
         //return a view and pass in the above var
         return view('posts.index')->withPosts($posts);
+        }
     }
 
     /**

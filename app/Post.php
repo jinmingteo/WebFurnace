@@ -19,4 +19,7 @@ class Post extends Model
     public function poster() {
     	return $this->belongsTo('App\Consumer');
     }
+    public function scopeSearch($query, $search) {
+        return $query->where('title', 'LIKE', '%$search%');
+    }
 }

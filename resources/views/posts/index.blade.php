@@ -13,11 +13,19 @@
 			<a href="{{ route('posts.create')}}" class= "btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Post</a>
 		</div>
 		@endif
-		<div class="col-md-12">
-			<hr>
-		</div> 
+
 	</div> <!-- end of row -->
-		
+	
+	<br>
+	<div class="row">
+		<form method="get">
+			{{ csrf_field() }}
+			<div class="form-group">						<input type="search" name="q" class="form-control" placeholder="Search for..." id="q" style="width:300px; height:40px; margin-left:15px">
+			</div>
+		</form>
+	</div>
+	<hr>
+
 	<div class="well">
 	
 			@foreach ($posts as $post)
