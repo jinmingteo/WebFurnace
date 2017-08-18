@@ -26,7 +26,7 @@
                 </div>
                 @if (Auth::user()->username == $user->username)
                 <div class="col-md-1" style="margin-left:10px">
-                    <a href="{{ route('consumerprofile.edit', $user->username) }}" class="btn btn-primary" style="margin-top: 25px">Update Profile</a>
+                    <a href="{{ route('consumerprofile.edit', $user->username) }}" class="btn btn-primary" style="margin-top: 25px">Edit Profile</a>
                 </div>
                 @endif
             </div>
@@ -46,7 +46,9 @@
             </div>
         </div>
     </div> 
+</div>
     <br>
+<div class="well">
     <div class="row">
         <div class="text-center">
         <h3>Recent Job Posts by {{$user->username}}</h3>
