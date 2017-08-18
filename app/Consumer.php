@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ConsumerResetPasswordNotification;
 use DB;
+use App\Post;
 
 class Consumer extends Authenticatable
 {
@@ -48,7 +49,7 @@ class Consumer extends Authenticatable
     }
 
     public function getposts() {
-        $posts = DB::table('posts')->where('poster', $this->username);
+        $posts = Post::where('poster', $this->username)->orderBy('id', 'desc')->paginate(5);
         return $posts;
     }
 }
