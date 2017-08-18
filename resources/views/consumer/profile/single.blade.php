@@ -15,7 +15,11 @@
         <div class="col-xs-12 col-sm-12">
             <div class="row">
                 <div class="col-md-11">
-                    <figure><img src="{{asset('images/'.$design->image)}}" class="profile-image"></figure>
+                    @if (empty($design->image))
+                    <figure><img src="{{asset('images/profile.jpg')}}" class="profile-image"/></figure>
+                    @else
+                    <figure><img src="{{asset('images/'.$design->image)}}" class="profile-image"/></figure>
+                    @endif
                     <div class="profile-name">
                         <h1>{{$user -> username}}</h1> 
                     </div>
@@ -67,7 +71,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More and Apply</a>
+                                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More</a>
                                 </div>
                             </div>
                         </div>

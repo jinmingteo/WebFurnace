@@ -37,7 +37,7 @@
 
 							<div class="row">
 								<div class="col-md-6">
-									<a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More and Apply</a>
+									<a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View More</a>
 								</div>
 							</div>
 						</div>
