@@ -41,6 +41,7 @@
 						<div class="well">
 							<dl class="dl horizontal">
 								<label>Remuneration:</label><p>{{ $post->budget}}</p>
+								<p><label>Deadline:</label> {{ $post->getdeadline($post->deadline_id) }}</p>
 							</dl>
 
 							<div class="row">

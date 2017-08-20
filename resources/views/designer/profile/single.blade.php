@@ -50,7 +50,14 @@
             </div>
         </div>
     </div> 
-</div><!--<div class="container">
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<!--<div class="container">
+
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
     	 <div class="well profile">

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Deadline;
 
 class Post extends Model
 {
@@ -21,5 +22,9 @@ class Post extends Model
     }
     public function scopeSearch($query, $search) {
         return $query->where('title', 'LIKE', '%$search%');
+    }
+    public function getdeadline($id){
+        $deadline = Deadline::where('id', $id)->value('name');
+        return $deadline;
     }
 }

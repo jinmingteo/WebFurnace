@@ -16,6 +16,7 @@
 			@endif
 			<h5 class="lead">{!! $post -> body !!}</h5>
 			<h4>Remuneration: {{ $post->budget }}</h4>
+			<h4>Deadline: {{ $post->getdeadline($post->deadline_id) }}</h4>
 			<hr>
 
 			<div class="row">
