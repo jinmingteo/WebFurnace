@@ -6,10 +6,14 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<!-- <img src="{{asset('images/'.$post->image)}}" alt ="This is a photo"/> -->
 			<h1>{!! $post->title !!}</h1>
 			<small>posted by: <a href="{{ route('consumerprofile.show', $post->poster) }}">{{ $post->poster }}</a></small>
-			
+			<br>
+			<br>
+			@if (empty($post->image))
+			@else
+			<img src="{{asset('images/'.$post->image)}}" class="post-image" alt ="This is a photo"/>
+			@endif
 			<h5 class="lead">{!! $post -> body !!}</h5>
 			<h4>Remuneration: {{ $post->budget }}</h4>
 			<hr>
