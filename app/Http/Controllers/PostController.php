@@ -16,7 +16,7 @@ class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth', ['except' => 'index', 'show']);
+        $this->middleware('auth:consumers', ['except' => 'index', 'show']);
         //, ['only'=>'create','edit','destroy','store','update']
         //only consumers can access create page...
       }

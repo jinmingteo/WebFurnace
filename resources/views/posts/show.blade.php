@@ -33,7 +33,11 @@
 							<img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) }}" class="author-image">
 								
 								<div class="author-name">
-									<h4>{{$comment->username }}</h4>
+								@if ($comment->gettype($comment->username) == 1)
+									<a href="{{ route('consumerprofile.show', $comment->username) }}">{{$comment->username }}</a>
+								@else
+									<a href="{{ route('designerprofile.show', $comment->username) }}">{{$comment->username }}</a>
+								@endif
 									<p class="author-time">{{ date('M j, Y h:ia'), strtotime($comment->created_at) }}</p>
 								</div>
 								<div class="buttons">
