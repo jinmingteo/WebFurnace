@@ -36,6 +36,11 @@ Route::put('comments/{id}', ['uses'=> 'CommentsController@update', 'as' => 'comm
 Route::delete('comments/{id}', ['uses'=> 'CommentsController@destroy', 'as' => 'comments.destroy']);
 Route::get('comments/{id}/delete', ['uses'=> 'CommentsController@delete', 'as' =>'comments.delete']);
 
+Route::post('comments/consumer/{post_id}', ['uses'=>'ConsumerCommentsController@store', 'as'=> 'comments.consumer.store']);
+Route::get('comments/consumer/{id}/edit', ['uses'=> 'ConsumerCommentsController@edit', 'as' => 'comments.consumer.edit']);
+Route::put('comments/consumer/{id}', ['uses'=> 'ConsumerCommentsController@update', 'as' => 'comments.consumer.update']);
+Route::delete('comments/consumer/{id}', ['uses'=> 'ConsumerCommentsController@destroy', 'as' => 'comments.consumer.destroy']);
+Route::get('comments/consumer/{id}/delete', ['uses'=> 'ConsumerCommentsController@delete', 'as' =>'comments.consumer.delete']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 

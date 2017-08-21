@@ -8,10 +8,10 @@ use App\Post;
 use Session;
 use Auth;
 
-class CommentsController extends Controller
+class ConsumerCommentsController extends Controller
 {
     public function __construct() {
-        //$this->middleware('auth:consumers'); //same as post controller, not really working..
+        $this->middleware('auth:consumers'); //same as post controller, not really working..
     }
     /**
      * Display a listing of the resource.
@@ -80,7 +80,7 @@ class CommentsController extends Controller
     {
         $comment = Comment::find($id);
 
-        return view('comments.edit')->withComment($comment);
+        return view('comments.consumer.edit')->withComment($comment);
     }
 
     /**
@@ -105,7 +105,7 @@ class CommentsController extends Controller
     }
     public function delete($id) {
         $comment = Comment::find($id);
-        return view('comments.delete')->withComment($comment);
+        return view('comments.consumer.delete')->withComment($comment);
     }
     /**
      * Remove the specified resource from storage.
