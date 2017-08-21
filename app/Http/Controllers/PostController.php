@@ -16,7 +16,7 @@ class PostController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('auth:consumers', ['except' => 'index', 'show']);
+        //$this->middleware('auth:consumers', ['except' => 'index', 'show']);
         //, ['only'=>'create','edit','destroy','store','update']
         //only consumers can access create page...
       }
@@ -81,7 +81,7 @@ class PostController extends Controller
         $post->deadline_id=$request->deadline_id;
         $post->budget=$request->budget;
         $post->body = Purifier::clean($request->body);
-        $post->poster = Auth::user()->username;
+        $post->poster = Auth::guard('consumers')->user()->username;
 
         if ($request->has('othercategory')){
           $post->othercategory=$request->othercategory;

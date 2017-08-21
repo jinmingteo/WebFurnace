@@ -21,11 +21,11 @@ class ConsumerProfileController extends Controller
      */
 
     public function __construct(){
-        $this->middleware('auth:consumers');
+        //$this->middleware('auth:consumers');
     }
     public function index()
     {
-        $user = Auth::user();
+        $user = Auth::guard('consumers')->user();
         //no profile so must update
         if (is_null($user->consumerprofile_id)){
             return view('consumer.profile.update');    

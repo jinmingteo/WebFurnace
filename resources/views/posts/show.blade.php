@@ -47,7 +47,7 @@
 										<a href="{{route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 									@endif
 								@else
-									@if (Auth::user()->username == $comment->username)
+									@if (Auth::guard('consumers')-> check() and Auth::guard('consumers')->user()->username == $comment->username)
 										<a href="{{route('comments.consumer.edit', $comment->id) }}" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
 										<a href="{{route('comments.consumer.delete', $comment->id) }}" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 									@endif
@@ -131,7 +131,7 @@
 					<p>{{date('M j, Y H:i',strtotime($post-> updated_at))}}</p>
 				</dl>
 				<hr>
-				@if (Auth::user()->username == $post->poster) 
+				@if (Auth::guard('consumers')-> check() and Auth::guard('consumers')->user() ->username == $post->poster) 
 					<div class="row">
 						<div class="col-sm-6">
 							{!! Html::linkRoute('posts.edit','Edit',array($post -> id),array('class' =>'btn btn-primary btn-block'))!!}

@@ -24,7 +24,7 @@
                         <h1>{{$user -> username}}</h1> 
                     </div>
                 </div>
-                @if (Auth::user()->username == $user->username)
+                @if (Auth::check() and Auth::user()->username == $user->username)
                 <div class="col-md-1" style="margin-left:10px">
                     <a href="{{ route('designerprofile.edit', $user->username) }}" class="btn btn-primary" style="margin-top: 25px">Edit Profile</a>
                 </div>
