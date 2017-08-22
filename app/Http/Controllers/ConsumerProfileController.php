@@ -73,8 +73,8 @@ class ConsumerProfileController extends Controller
         }
         $consumerprofile->save();
         
-        $user = Auth::user();
-        Auth::user()->consumerprofile_id = $consumerprofile->id;
+        $user = Auth::guard('consumers') ->user();
+        $user->consumerprofile_id = $consumerprofile->id;
         $user->save();
         
 

@@ -23,7 +23,7 @@
 				<br>
 
 				{{ Form::label('featured_image', 'Upload Featured Image:') }}
-				{{ Form::file('featured_image') }}
+				{{ Form::file('featured_image', ['class' => 'form-control','required' => ''])}}
 				<br>
 
 				{{Form::submit('Update profile', ['class' => 'btn btn-primary btn-block'])}}
